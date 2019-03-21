@@ -1,0 +1,15 @@
+extends ../layout
+
+block title
+  = `Tweet id ${id}`
+
+block content
+  a(href=`/tweets`) Back to tweets
+
+  #list
+    .column
+      h4= `${user}`
+      .card
+        header.card-header 
+          p.card-header-title
+            = msg
