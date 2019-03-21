@@ -1,0 +1,34 @@
+extends ../layout
+
+block title
+  = `Tweets`
+
+block content
+  h1.title Tweets
+
+  a(href=`/tweets/new`) New tweet
+
+  #list
+    - if(tweets.length > 0)
+      - for (let i = 0; i < tweets.length; i +=1)
+          .column
+            h4= `${tweets[i].user}`
+          - if(tweets[i].user == user)
+            a(href=`/tweets/${tweets[i].id}/edit`)
+              .card
+                header.card-header 
+                  p.card-header-title
+                    = tweets[i].msg
+          - else
+            a(href=`/tweets/${tweets[i].id}`)
+              .card
+                header.card-header 
+                  p.card-header-title
+                    = tweets[i].msg
+    - else
+      .column
+        .card
+          header.card-header
+            p.card-header-title No tweet!
+        
+      
